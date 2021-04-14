@@ -4,7 +4,7 @@
   "description": "Desarrollar un servidor en Node.js con express que realice las siguientes tareas: (se mostrará por consola cuando el servidor esté listo para operar y en que puerto lo está haciendo)",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --collectCoverage=false server.test.js",
     "start": "node server.js"
   },
   "repository": {
@@ -13,11 +13,16 @@
   },
   "author": "Luciano Nahuel Vitale",
   "license": "MIT",
+  "jest": {
+    "testURL": "http://localhost/"
+  },
   "bugs": {
     "url": "https://github.com/luvitale/NodeTP3/issues"
   },
   "homepage": "https://github.com/luvitale/NodeTP3#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "eslint": "^7.23.0",
+    "jest": "^26.6.3"
   }
 }

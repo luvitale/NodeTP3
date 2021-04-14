@@ -2,8 +2,8 @@ const express = require('express')
 
 const app = express()
 
-getGreeting = (hour) => {
-    if (hour < 0 && hour >= 24) {
+const getGreeting = hour => {
+    if (hour < 0 || hour >= 24) {
         return 'Hora inválida'
     }
 
@@ -11,7 +11,7 @@ getGreeting = (hour) => {
         return 'Buenos dias!'
     }
 
-    else if (hour >= 13 || hour <= 19) {
+    else if (hour >= 13 && hour <= 19) {
         return 'Buenas tardes!'
     }
 
@@ -30,3 +30,7 @@ const server = app.listen(PORT, () => {
     console.log(`Servidor express escuchando en el puerto ${server.address().port}`)
 })
 server.on('error', error => console.log(`Error en Servidor: ${error}`))
+
+module.exports = {
+    getGreeting
+};
