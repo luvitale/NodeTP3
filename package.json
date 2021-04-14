@@ -1,0 +1,20 @@
+{
+  "name": "tp3",
+  "version": "1.0.0",
+  "description": "Desarrollar un servidor en Node.js con express que realice las siguientes tareas: (se mostrará por consola cuando el servidor esté listo para operar y en que puerto lo está haciendo)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/luvitale/NodeTP3.git"
+  },
+  "author": "Luciano Nahuel Vitale",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luvitale/NodeTP3/issues"
+  },
+  "homepage": "https://github.com/luvitale/NodeTP3#readme"
+}
