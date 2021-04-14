@@ -4,7 +4,7 @@
   "description": "Desarrollar un servidor en Node.js con express que realice las siguientes tareas: (se mostrará por consola cuando el servidor esté listo para operar y en que puerto lo está haciendo)",
   "main": "server.js",
   "scripts": {
-    "test": "jest --collectCoverage=false server.test.js",
+    "test": "jest --collectCoverage=false utils.test.js",
     "start": "node server.js"
   },
   "repository": {

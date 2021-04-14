@@ -1,4 +1,4 @@
-const { getGreeting } = require("../server");
+const { getGreeting } = require("../utils");
 
 describe("Test getGreeting", () => {
     it("debería retornar buenos días a las 6", () => {
