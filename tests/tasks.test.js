@@ -1,4 +1,4 @@
-import { getGreeting, getRandomNumbersObject, readAndWriteInfo } from "../utils.js";
+import { getGreeting, getRandomNumbersObject, readAndWriteInfo } from "../api/tasks.js";
 import fs from 'fs';
 
 describe("Test getGreeting", () => {

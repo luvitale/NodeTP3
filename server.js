@@ -1,7 +1,9 @@
 import express from 'express'
-import { getGreeting, getRandomNumbersObject, readAndWriteInfo } from './utils.js'
+import { getGreeting, getRandomNumbersObject, readAndWriteInfo } from './api/tasks.js'
 
 const app = express()
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
     let actualHour = new Date().getHours()
@@ -25,6 +27,10 @@ app.get('/info', async (req, res) => {
     const textToSend = await readAndWriteInfo(filePackage, fileInfo)
     if (typeof textToSend != 'object') res.status(404)
     res.send(textToSend)
+})
+
+app.get('/operaciones', (req, res) => {
+    res.send('Operations in construction')
 })
 
 const PORT = 8080
