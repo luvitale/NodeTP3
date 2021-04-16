@@ -1,9 +1,14 @@
 import express from 'express'
-import { getGreeting, getRandomNumbersObject, readAndWriteInfo } from './api/tasks.js'
+import {
+    getGreeting,
+    getRandomNumbersObject,
+    readAndWriteInfo,
+    doOperation    
+} from './api/tasks.js'
 
 const app = express()
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
 
 app.get('/', (req, res) => {
     let actualHour = new Date().getHours()
@@ -30,7 +35,9 @@ app.get('/info', async (req, res) => {
 })
 
 app.get('/operaciones', (req, res) => {
-    res.send('Operations in construction')
+    let { num1, num2, operacion } = req.query
+
+    res.send(doOperation(num1, num2, operacion))
 })
 
 const PORT = 8080

@@ -1,4 +1,4 @@
-import { getGreeting, getRandomNumbersObject, readAndWriteInfo } from "../api/tasks.js";
+import { doOperation, getGreeting, getRandomNumbersObject, readAndWriteInfo } from "../api/tasks.js";
 import fs from 'fs';
 
 describe("Test getGreeting", () => {
@@ -196,5 +196,217 @@ describe("Test readAndWriteInfo", () => {
         expect(textToSend.hasOwnProperty("size")).toBeTruthy();
         expect(typeof textToSend["size"]).toEqual("number");
         await fs.promises.unlink(fileInfo);
+    });
+});
+
+describe("Test doOperation", () => {
+    it("debería retornar un objeto con el resultado 1010 en la suma entre 10 y 1000", () => {
+        const num1 = 10
+        const num2 = 1000
+        const operation = 'suma'
+
+        const result = doOperation(num1, num2, operation)
+        expect(typeof result).toEqual('object');
+        expect(result).toEqual({
+            "num1": 10,
+            "num2": 1000,
+            "operacion": "suma",
+            "resultado": 1010
+        });
+    });
+
+    it("debería retornar un objeto con el resultado 1011 en la suma entre 10.5 y 1000.5", () => {
+        const num1 = 10.5
+        const num2 = 1000.5
+        const operation = 'suma'
+
+        const result = doOperation(num1, num2, operation)
+        expect(typeof result).toEqual('object');
+        expect(result).toEqual({
+            "num1": 10.5,
+            "num2": 1000.5,
+            "operacion": "suma",
+            "resultado": 1011
+        });
+    });
+
+    it("debería retornar un objeto con el resultado -990 en la resta entre 10 y 1000", () => {
+        const num1 = 10
+        const num2 = 1000
+        const operation = 'resta'
+
+        const result = doOperation(num1, num2, operation)
+        expect(typeof result).toEqual('object');
+        expect(result).toEqual({
+            "num1": 10,
+            "num2": 1000,
+            "operacion": "resta",
+            "resultado": -990
+        });
+    });
+
+    it("debería retornar un objeto con el resultado 10000 en la multiplicación entre 10 y 1000", () => {
+        const num1 = 10
+        const num2 = 1000
+        const operation = 'multiplicacion'
+
+        const result = doOperation(num1, num2, operation)
+        expect(typeof result).toEqual('object');
+        expect(result).toEqual({
+            "num1": 10,
+            "num2": 1000,
+            "operacion": "multiplicacion",
+            "resultado": 10000
+        });
+    });
+
+    it("debería retornar un objeto con el resultado 10000 en la division entre 10 y 1000", () => {
+        const num1 = 10
+        const num2 = 1000
+        const operation = 'division'
+
+        const result = doOperation(num1, num2, operation)
+        expect(typeof result).toEqual('object');
+        expect(result).toEqual({
+            "num1": 10,
+            "num2": 1000,
+            "operacion": "division",
+            "resultado": 0.01
+        });
+    });
+
+    it("debería retornar un objeto con un error en la division entre 10 y 0", () => {
+        const num1 = 10
+        const num2 = 0
+        const operation = 'division'
+
+        const result = doOperation(num1, num2, operation)
+        expect(typeof result).toEqual('object');
+        expect(result).toEqual({
+            "num1": {
+              "valor": 10,
+              "tipo": "number"
+            },
+            "num2": {
+              "valor": 0,
+              "tipo": "number"
+            },
+            "operacion": {
+              "valor": "division",
+              "tipo": "string"
+            }
+        });
+    });
+
+    it("debería retornar un objeto con un error en la suma entre 10 y a", () => {
+        const num1 = 10
+        const num2 = "a"
+        const operation = 'suma'
+
+        const result = doOperation(num1, num2, operation)
+        expect(typeof result).toEqual('object');
+        expect(result).toEqual({
+            "num1": {
+              "valor": 10,
+              "tipo": "number"
+            },
+            "num2": {
+              "valor": "a",
+              "tipo": "string"
+            },
+            "operacion": {
+              "valor": "suma",
+              "tipo": "string"
+            }
+        });
+    });
+
+    it("debería retornar un objeto con un error en la suma de num1 igual a 10 sin num2", () => {
+        const num1 = 10
+        const num2 = undefined
+        const operation = 'suma'
+
+        const result = doOperation(num1, num2, operation)
+        expect(typeof result).toEqual('object');
+        expect(result).toEqual({
+            "num1": {
+              "valor": 10,
+              "tipo": "number"
+            },
+            "num2": {
+              "tipo": "undefined"
+            },
+            "operacion": {
+              "valor": "suma",
+              "tipo": "string"
+            }
+        });
+    });
+
+    it("debería retornar un objeto con un error en la suma de num2 igual a 1000 sin num1", () => {
+        const num1 = undefined
+        const num2 = 1000
+        const operation = 'suma'
+
+        const result = doOperation(num1, num2, operation)
+        expect(typeof result).toEqual('object');
+        expect(result).toEqual({
+            "num1": {
+              "tipo": "undefined"
+            },
+            "num2": {
+              "valor": 1000,
+              "tipo": "number"
+            },
+            "operacion": {
+              "valor": "suma",
+              "tipo": "string"
+            }
+        });
+    });
+
+    it("debería retornar un objeto con un error en una operación potencia entre 10 y 1000", () => {
+        const num1 = 10
+        const num2 = 1000
+        const operation = 'potencia'
+
+        const result = doOperation(num1, num2, operation)
+        expect(typeof result).toEqual('object');
+        expect(result).toEqual({
+            "num1": {
+                "valor": 10,
+                "tipo": "number"
+            },
+            "num2": {
+              "valor": 1000,
+              "tipo": "number"
+            },
+            "operacion": {
+                "valor": "potencia",
+                "tipo": "string"
+            }
+        });
+    });
+    
+    it("debería retornar un objeto con un error en una operación no definida entre 10 y 1000", () => {
+        const num1 = 10
+        const num2 = 1000
+        const operation = undefined
+
+        const result = doOperation(num1, num2, operation)
+        expect(typeof result).toEqual('object');
+        expect(result).toEqual({
+            "num1": {
+                "valor": 10,
+                "tipo": "number"
+            },
+            "num2": {
+              "valor": 1000,
+              "tipo": "number"
+            },
+            "operacion": {
+              "tipo": "undefined"
+            }
+        });
     });
 });
