@@ -43,7 +43,7 @@ app.get('/operaciones', (req, res) => {
   res.send(result)
 })
 
-app.set('PORT', 8080)
+app.set('PORT', process.env.PORT || 8080)
 const server = app.listen(app.get('PORT'), () => {
   console.log(`Servidor express escuchando en el puerto ${server.address().port}`)
 })
