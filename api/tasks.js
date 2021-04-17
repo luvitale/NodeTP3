@@ -48,7 +48,8 @@ export const readAndWriteInfo = async (filePackage, fileInfo) => {
 
         console.log(util.inspect(info, {depth: null, colors: true}))
 
-        let fileToWrite = await fs.promises.writeFile(fileInfo, JSON.stringify(info, null, 2), 'utf-8')
+        const space = 2
+        await fs.promises.writeFile(fileInfo, JSON.stringify(info, null, space), 'utf-8')
 
         return info
     }
