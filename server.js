@@ -37,7 +37,10 @@ app.get('/info', async (req, res) => {
 app.get('/operaciones', (req, res) => {
   let { num1, num2, operacion } = req.query
   
-  res.send(doOperation(num1, num2, operacion))
+  let result = doOperation(num1, num2, operacion)
+
+  if (result.hasOwnProperty('error')) res.status(404)
+  res.send(result)
 })
 
 const PORT = 8080
