@@ -43,8 +43,8 @@ app.get('/operaciones', (req, res) => {
   res.send(result)
 })
 
-const PORT = 8080
-const server = app.listen(PORT, () => {
+app.set('PORT', 8080)
+const server = app.listen(app.get('PORT'), () => {
   console.log(`Servidor express escuchando en el puerto ${server.address().port}`)
 })
 server.on('error', error => console.log(`Error en Servidor: ${error}`))
