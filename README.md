@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.com/luvitale/NodeTP3.svg?branch=main)](https://travis-ci.com/luvitale/NodeTP3)
+[![Pipeline Status](https://gitlab.com/luvitale/NodeTP3/badges/main/pipeline.svg)](https://gitlab.com/luvitale/NodeTP3/-/commits/main)
+
 # Node TP3
 
 ## Servidores en Node.js
