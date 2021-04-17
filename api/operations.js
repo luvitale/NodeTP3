@@ -4,8 +4,8 @@ const mult = (num1, num2) => num1 * num2
 const div = (num1, num2) => num1 / num2
 
 export default {
-    suma,
-    resta,
-    mult,
-    div
+  suma,
+  resta,
+  mult,
+  div
 }

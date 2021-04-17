@@ -12,6 +12,10 @@
     "type": "git",
     "url": "git+ssh://git@github.com/luvitale/NodeTP3.git"
   },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
   "author": "Luciano Nahuel Vitale",
   "license": "MIT",
   "babel": {
