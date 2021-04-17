@@ -64,6 +64,19 @@ describe("Test getRandomNumbersObject", () => {
     const randomNumbersObject = getRandomNumbersObject(numbersQuantity, numbersRange);
     expect(typeof randomNumbersObject).toEqual('object');
   });
+
+  it("debería retornar un objeto con una cantidad total de 10000 números desde 1 hasta 20", () => {
+    const numbersQuantity = 10000
+    const numbersRange = {
+      min: 1,
+      max: 20
+    };
+    
+    const randomNumbersObject = getRandomNumbersObject(numbersQuantity, numbersRange);
+    expect(typeof randomNumbersObject).toEqual('object');
+    const totalQuantity = Object.values(randomNumbersObject).reduce((acc, cur) => acc += cur)
+    expect(totalQuantity).toEqual(numbersQuantity)
+  });
   
   it("debería retornar un objeto con la única clave 1 con un rango entre 1 y 1", () => {
     const numbersQuantity = 10000;
