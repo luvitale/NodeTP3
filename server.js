@@ -3,7 +3,7 @@ import {
   getGreeting,
   getRandomNumbersObject,
   readAndWriteInfo,
-  doOperation    
+  doOperation
 } from './api/tasks.js'
 
 const app = express()
@@ -21,14 +21,14 @@ app.get('/random', (req, res) => {
     min: 1,
     max: 20
   }
-  
+
   res.send(getRandomNumbersObject(numbersQuantity, numbersRange))
 })
 
 app.get('/info', async (req, res) => {
   const filePackage = './package.json'
   const fileInfo = './info.txt'
-  
+
   const textToSend = await readAndWriteInfo(filePackage, fileInfo)
   if (typeof textToSend != 'object') res.status(404)
   res.send(textToSend)
@@ -36,7 +36,7 @@ app.get('/info', async (req, res) => {
 
 app.get('/operaciones', (req, res) => {
   let { num1, num2, operacion } = req.query
-  
+
   let result = doOperation(num1, num2, operacion)
 
   if (result.hasOwnProperty('error')) res.status(404)
