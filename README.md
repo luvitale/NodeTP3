@@ -59,3 +59,21 @@ glitch.com.
 - Subir el ejercicio a github (ignorar la subida de node_modules) y hacer el deploy en glitch desde
 dicho repo. Fijar la versión mínima de Node.js para que glitch instale la versión correcta de node y
 funcionen los import de ES Modules.
+
+## Install dependencies
+
+```bash
+npm install
+```
+
+## Test
+
+```bash
+npm test
+```
+
+## Start the server
+
+```bash
+npm start
+```
