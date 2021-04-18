@@ -1,4 +1,5 @@
 import express from 'express'
+import myUtils from './api/my-utils.js'
 import {
   getGreeting,
   getRandomNumbersObject,
@@ -9,10 +10,21 @@ import {
 const app = express()
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+app.use(express.static('public'))
 
 app.get('/', (req, res) => {
   let actualHour = new Date().getHours()
-  res.send(getGreeting(actualHour))
+
+  const color = myUtils.getRandomColor()
+
+  res.send(`
+      <link rel="stylesheet" type="text/css" href="css/greeting.css" />
+      <div class="greeting-container" id="greeting-container" style="background-color: ${myUtils.getBackgroundColor(color)};">
+        <h1 class="greeting-text" id="greeting-text" style="color: ${color};">
+          ${getGreeting(actualHour)}
+        </h1>
+      </div>
+    `)
 })
 
 app.get('/random', (req, res) => {
