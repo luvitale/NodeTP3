@@ -60,19 +60,19 @@ glitch.com.
 dicho repo. Fijar la versión mínima de Node.js para que glitch instale la versión correcta de node y
 funcionen los import de ES Modules.
 
-## Install dependencies
+### Install dependencies
 
 ```bash
 npm install
 ```
 
-## Test
+### Test
 
 ```bash
 npm test
 ```
 
-## Start the server
+### Start the server
 
 ```bash
 npm start
